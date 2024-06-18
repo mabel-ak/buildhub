@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    font-family: poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+/* Header Styles */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #111;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.back-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo  a{
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.template-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .template-section h1 {
+    font-size: 29px;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    position: relative;
+   
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 20px; /* Adjust margin as needed */
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .search-bar input[type="text"] {
+    flex: 1;
+    font-family: poppins;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .search-bar i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #555;
+  }
+  
+  .template-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .template {
+    position: relative;
+    width: calc(50% - 10px); /* Adjust as needed for spacing */
+    text-align: center;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: 0.15s;
+
+  }
+  
+  .template img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .template .template-title {
+    background-color: rgba(255, 153, 0, 0.8);
+    color: white;
+    padding: 8px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .template .view-template {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 8px 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .template:hover{
+    border: 2px solid orange;
+  }
+  
+  .template:hover .view-template {
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .template {
+      width: 100%;
+    }
+  }

@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    font-family: poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+/* Header Styles */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #111;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.back-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo  a{
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    
+}
+
+.spacer {
+    width: 0px; /* Adjust width to match the width of the "Back" link */
+}
+
+/* Admin Login Container */
+.admin-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 20px;
+    text-align: center;
+    margin-top: 60px; /* Add margin to account for fixed header height */
+}
+
+/* Main Content Styles */
+.admin-main {
+    background-color: #ffffff00;
+    padding: 40px;
+    border-radius: 8px;
+
+    width: 600px;
+    max-width: 100%;
+}
+
+.admin-main h2 {
+    font-family: poppins;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+
+.signup-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.admin-form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form label {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.admin-form input {
+    margin-bottom: 20px;
+    padding:15px;
+    background: transparent;
+    border: 2px solid #000000;
+    border-radius: 15px;
+}
+
+.admin-button {
+    padding: 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .2s;
+}
+
+.admin-button:hover {
+    background-color: #0b0c0c;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="stylesheet" href="prompt.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <link rel="shortcut icon" href="images/finish.png" type="image/svg+xml">
+</head>
+<body>
+    <div class="admin-login-container">
+        <header class="admin-header">
+            <a href="index.html" class="back-link"><i class="fas fa-chevron-left"></i> Back</a>
+            <div class="logo">        <a href="#"><i class="fas fa-flag"></i> Build<strong style="color: lightskyblue;">Hub..</strong>.</a></div>
+        </header>
+       <br>
+       <br>
+       <br>
+       <br>
+       <h1 style=" text-align:center; color: rgb(0, 0, 0)" > </h1>
+
+
+     
+       <section class="template-section">
+        <h1> Welcome to  <a href="#" style=" text-align:center; color: rgb(0, 0, 0); text-decoration: none;"><i class="fas fa-flag"></i> Build<strong style="color: lightskyblue;">Hub <br></strong></a> Choose a suitable website template</h1>
+        <p> Choose a suitable website template from our curated selection to kickstart <br> your online presence with style and ease.</p>
+        
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="template-search" placeholder="Search templates...">
+          </div>
+        
+        <div class="template-images">
+          <div class="template" data-title="School Portal">
+            <img src="images/Agency Landing-Page v3.jpeg" alt="Template 1">
+            <div class="template-title">School Portal</div>
+            <a href="#" class="view-template">View Template  <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="template" data-title="University Campus">
+            <img src="images/Browse thousands of Education images for design inspiration.jpeg" alt="Template 2">
+            <div class="template-title">University Campus</div>
+            <a href="#" class="view-template">View Template  <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="template" data-title="Online Learning">
+            <img src="images/SaaS Website landing page design - free.jpeg" alt="Template 3">
+            <div class="template-title">Online Learning</div>
+            <a href="#" class="view-template">View Template  <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="template" data-title="Library Resources">
+            <img src="images/Travigo - Travel Landing Page ✈️.jpeg" alt="Template 4">
+            <div class="template-title">Library Resources</div>
+            <a href="#" class="view-template">View Template  <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('template-search');
+            const templates = document.querySelectorAll('.template');
+          
+            searchInput.addEventListener('input', function() {
+              const searchTerm = searchInput.value.trim().toLowerCase();
+          
+              templates.forEach(template => {
+                const title = template.getAttribute('data-title').toLowerCase();
+                const isVisible = title.includes(searchTerm);
+          
+                if (isVisible) {
+                  template.style.display = 'block';
+                } else {
+                  template.style.display = 'none';
+                }
+              });
+            });
+          });
+          
+      </script>
+
+
+    </div>
+</body>
+</html>
