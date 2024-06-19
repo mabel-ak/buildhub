@@ -8,10 +8,28 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <link rel="shortcut icon" href="images/finish.png" type="image/svg+xml">
+    <style>
+        /* Add styles for the pop-up */
+        .popup {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: bottom 0.5s, opacity 0.5s;
+        }
+        .popup.show {
+            bottom: 20px;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-login-container">
@@ -21,8 +39,8 @@
         </header>
         <main class="admin-main">
             <h2><i class="fas fa-flag"></i> <br>Admin Login</h2>
-            <p>Do not have a Hub account? <a href="signup.html" class="signup-link">Sign up</a></p>
-            <form class="admin-form">
+            <p>Do not have a Hub account? <a href="signup.html" class="signup-link">Signup instead</a></p>
+            <form class="admin-form" id="admin-login-form">
                 <label for="email">Enter your email</label>
                 <input type="email" id="email" name="email" required>
                 <label for="password">Confirm password</label>
@@ -31,5 +49,41 @@
             </form>
         </main>
     </div>
+
+    <div id="popup" class="popup"></div>
+
+    <script>
+        document.getElementById('admin-login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            
+            // Collect form data
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Retrieve existing users from local storage
+            const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Check if the user exists
+            const userExists = existingUsers.some(user => user.email === email && user.password === password);
+
+            if (userExists) {
+                // Redirect to schoolreg.html if user exists
+                window.location.href = 'schoolreg.html';
+            } else {
+                // Show error message if user does not exist
+                showPopup('User does not exist');
+            }
+        });
+
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.classList.add('show');
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000); // Hide the pop-up after 3 seconds
+        }
+    </script>
 </body>
 </html>

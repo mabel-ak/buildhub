@@ -27,7 +27,7 @@
             <br>
             <br>
          
-            <h2><i class="fas fa-flag"></i> <br>School's Registeration</h2>
+            <h2><i class="fas fa-flag"></i> <br>Welcome <span id="username"></span>! <br> Let's Register Your School</h2>
        
             <form class="admin-form">
                 <label for="nmae">Enter School name</label>
@@ -47,5 +47,20 @@
             </form>
         </main>
     </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the current user's email from localStorage
+            const currentUserEmail = localStorage.getItem('currentUserEmail');
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const currentUser = users.find(user => user.email === currentUserEmail);
+
+            if (currentUser) {
+                // Insert the user's first name into the welcome message
+                document.getElementById('username').textContent = currentUser.firstName;
+            }
+        });
+    </script>
 </body>
 </html>

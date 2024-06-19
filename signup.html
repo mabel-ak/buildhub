@@ -8,10 +8,28 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <link rel="shortcut icon" href="images/finish.png" type="image/svg+xml">
+    <style>
+        /* Add styles for the pop-up */
+        .popup {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: bottom 0.5s, opacity 0.5s;
+        }
+        .popup.show {
+            bottom: 20px;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-login-container">
@@ -30,26 +48,86 @@
             <br>
             <br>
             <br>
-            <h2><i class="fas fa-flag"></i> <br>Admin Registeration</h2>
-            <p>Already have a Hub account? <a href="login.html" class="signup-link">Sign up</a></p>
-            <form class="admin-form">
-                <label for="nmae">Enter your first name</label>
-                <input type="name" id="email" name="email" required>
-                <label for="nmae">Enter your last name</label>
-                <input type="name" id="email" name="email" required>
-
-
-
+            <h2><i class="fas fa-flag"></i> <br>Admin Registration</h2>
+            <p>Already have a Hub account? <a href="login.html" class="signup-link">Sign in</a></p>
+            <form class="admin-form" id="admin-form">
+                <label for="first-name">Enter your first name</label>
+                <input type="text" id="first-name" name="first-name" required>
+                
+                <label for="last-name">Enter your last name</label>
+                <input type="text" id="last-name" name="last-name" required>
+                
                 <label for="email">Enter your email</label>
                 <input type="email" id="email" name="email" required>
-
+                
                 <label for="password">Create password</label>
                 <input type="password" id="password" name="password" required>
-                <label for="password">Confirm password</label>
-                <input type="password" id="password" name="password" required>
+                
+                <label for="confirm-password">Confirm password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                
                 <button type="submit" class="admin-button">Next</button>
             </form>
         </main>
     </div>
+
+    <div id="popup" class="popup"></div>
+
+    <script>
+        document.getElementById('admin-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            
+            // Collect form data
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            // Validate the passwords
+            if (password !== confirmPassword) {
+                showPopup('Passwords do not match');
+                return;
+            }
+
+            // Check if the user already exists
+            const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const userExists = existingUsers.some(user => user.email === email);
+
+            if (userExists) {
+                showPopup('This user already exists');
+                return;
+            }
+
+            // Store the new user data
+            const newUser = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+            existingUsers.push(newUser);
+            localStorage.setItem('users', JSON.stringify(existingUsers));
+            
+            // Store the current user's email for later reference
+            localStorage.setItem('currentUserEmail', email);
+
+            // Show success message and redirect
+            showPopup('Sign-up successful!');
+            setTimeout(() => {
+                window.location.href = 'schoolreg.html';
+            }, 3000); // Redirect after the pop-up message is shown for 3 seconds
+        });
+
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.classList.add('show');
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 3000); // Hide the pop-up after 3 seconds
+        }
+    </script>
 </body>
 </html>
